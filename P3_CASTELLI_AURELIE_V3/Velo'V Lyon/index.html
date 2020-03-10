@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Carte interactive JC Decaux Lyon">
+	<link rel="icon" href="img/logo.jpg">
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- boostsrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- incone pour le diaporama -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!--fichiers leaflet-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+	<link rel="stylesheet" type="text/css" href="css/MarkerCluster.css" />
+	<link rel="stylesheet" type="text/css" href="css/MarkerCluster.Default.css" />
+
+	<title>Vélo'V Lyon</title>
+</head>
+
+<body>
+
+    <!-- bandeau de navigation -->
+    <div class="container-fluid bande-intro">
+        <div class="row no-padding">
+            <div class="col-md-4">
+                <a href="https://projet3-velo-v-lyon.formationop-ac.fr/"><img class="logo" src="img/logo-contract.png" alt="Vélo'V Lyon" /></a>
+            </div>
+            <div class="col-md-8">
+                <nav>
+                    <li><a href="#slider">Comment ça marche ?</a></li>
+                    <li><a href="#themap">La carte</a></li>
+                </nav>
+            </div>
+    <!-- header -->
+            <div class="col-12 intro">
+                <h1>Bienvenue sur notre site !</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- diaporama -->
+    <div class="container-fluid">
+        <div class="row no-padding">
+            <div class="box">
+                <h2 class="title">Comment ça marche ?</h2>
+            </div>
+            <div  class="col-md-8 mx-auto" id="slider">
+                <div class="slides">
+                        <img src="img/1.jpg">
+                        <h3>Velo'V un service simple</h3>
+                        <p class="texte">Choisissez votre station sur la carte intéractive.</p>
+                </div>
+                <div class="slides">
+                        <img src="img/2.jpg">
+                        <h3>Louez son Vélo'V</h3>
+                        <p class="texte">Signez pour valider votre reservation.</p>
+                </div>
+                <div class="slides">
+                        <img src="img/3.jpg">
+                        <h3>Roulez en Vélo'V</h3>
+                        <p class="texte">Récupérer son Vélo'V à la station choisie.<br>Roulez 7 jours sur 7, 24 heures sur 24.</p>
+                </div>
+                <div class="slides">
+                        <img src="img/4.jpg">
+                        <h3>Rendre son Vélo'V</h3>
+                        <p class="texte">Raccorcher son Vélo'V à la station choisie.</p>
+                </div>
+                <div id="panel">
+                    <a id="previous"><i class="material-icons">skip_previous</i></a>
+                    <a id="playPause"><i class="material-icons">pause</i></a>
+                    <a id="next"><i class="material-icons">skip_next</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- accueil -->
+    <div class="container-fluid">
+        <div class="row no-padding">
+            <div class="col-md-8 mx-auto accueil">
+                <h2>Profitez de la ville.</h2>
+                <p>
+                    Disponible 24h/24 et 7j/7, Vélo'v vous accompagne à chaque instant.
+                    <br>
+                    Pour vous déplacer selon vos besoins et vos envies en toute liberté découvrez notre application pour louer votre Vélo'V. Fidèle vélo'veur ou usager occasionnel, il n'a jamais été aussi facile pour trouver un Vélo'V dsiponible dans l'une de nos 349 stations.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteneur de la carte -->
+    <div class="container-fluid">
+        <div class="row no-padding">
+    <!-- Bandeau titre -->
+            <div id="themap" class="box">
+                <h2 class="title">La carte</h2>
+            </div>
+        </div>
+    <!-- La carte -->
+        <div class="row no-padding">
+            <div id="map">
+                    <noscript>Merci d'activer JavaScript.</noscript>
+                    <button input="button" id="map-reset">Recentrer la carte</button>
+            </div>
+            <div id="form_book">
+    <!-- Espace informations station -->
+                <div id="info">
+                    <span>Cliquez sur marqueur pour réserver :</span>
+                    <h4 class="info">Station sélectionnée</h4>
+                    <ul id="station-info">
+                        <li><i class="fas fa-bicycle"></i><span class="station-field"> Nom de la Station :</span><br><span class="station-name"  id="station-name"> </span></li>
+                        <li><i class="fas fa-bicycle"></i><span class="station-field"> Adresse :</span><br><span class="station-adresse" id="station-adresse"></span></li>
+                        <li><i class="fas fa-bicycle"></i><span class="station-field"> Places : </span><span  id="station-bike_stands"></span></li>
+                        <li><i class="fas fa-bicycle"></i><span class="station-field"> Vélo'V disponible : </span><span  id="station-available_bikes"></span></li>
+                    </ul>
+                </div>
+    <!-- Formulaire -->
+                <form id="reservation">
+                    <input name="firstname" id="firstname" placeholder="Votre prenom" type="text" required="" size="50">
+                    <input name="lastname" id="lastname" placeholder="Votre nom" type="text" required="" size="50"><br><br>
+                    <input name="stationNumber" type="hidden">
+                    <input name="stationName" type="hidden">
+                    <canvas id="signature">
+                        <p>Désolé, votre navigateur ne supporte pas Canvas. Mettez-vous à jour</p>
+                    </canvas>
+                    <canvas id="signatureCheck"></canvas>
+                    <br>
+                    <input id="clear" type="reset" value="Annuler" onclick="this.form.reset()">
+                    <input type="button" class="submit" value="Reserver" onclick="reservationStart()">
+                </form>
+            </div>
+        </div>
+    <!-- validation et compte à rebours -->
+        <div class="row no-padding">
+            <div id="countdown"></div>
+        </div>
+    </div>
+
+
+    <!-- pied de page -->
+    <div class="container-fluid">
+        <div class="row no-padding pied_page">
+            <div class="col-lg-4 col-md-12">
+                <div class="mentions_legales"><a href="">mentions légales</a><br>
+                    <span class="copyright">© Copyright 2019. Tous Droits Réservés.</span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <span class="contact">Contact</span><br>
+                <p><i class="fas fa-phone"></i> 01 30 79 33 40<br>
+                <i class="fas fa-envelope"></i> contact.velov@jcdecaux.com</p>
+            </div>
+            <div class="col-lg-4 col-12">
+                <span>Faux site de location de Vélib à Lyon dans le cadre d’une formation de développeur web junior.</span>
+            </div>
+        </div>
+    </div>
+
+<!--script javaScrip-->
+	<!-- boostsrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<!-- slider -->
+	<script src="js/slideshow.js"></script>
+
+	<!-- la carte -->
+  <script src="js/ajax.js"></script>
+	<script src="js/leaflet.markercluster.js"></script>
+	<script src="js/map.js"></script>
+	<script src="js/reservation.js"></script>
+	<script src="js/canvas.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+</html>
