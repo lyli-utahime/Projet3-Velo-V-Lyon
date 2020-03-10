@@ -1,0 +1,440 @@
+body {
+	max-width: 100%;
+	max-height: 100%;
+	margin: 0;
+	font-family: Arial, Helvetica, "Liberation Sans", FreeSans, sans-serif;
+}
+
+.logo {
+	position: fixed;
+    margin-left: 5% ;
+	z-index: 999;
+	max-width: 150px;
+}
+
+/* marges bootstrap */
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.no-padding > [class*='col-'] {
+padding-right:0;
+padding-left:0;
+}
+.container-fluid {
+	margin-right: -15px;
+	margin-left: -15px;
+    padding: 0;
+    background-color: rgba(0,0,0,0.1);
+}
+
+/* menu */
+nav {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	list-style-type: none;
+	overflow: hidden;
+	background-color: rgba(0,0,0,0.5);
+	top: 0;
+	position: fixed;
+	width: 100%;
+	z-index: 998;
+	left:0;
+    box-shadow: 0px 4px 4px rgba(250,0,0,0.8);
+}
+nav li {
+	display: inline;
+}
+nav li a {
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+nav li a:hover {
+	color: #FF0000;
+	text-decoration: none;
+}
+
+/* intro du site */
+.bande-intro {
+	background: url("../img/accueil.jpg") no-repeat;
+	background-size: cover;
+	min-height: 300px;
+	box-shadow: 6px 6px 6px rgba(0,0,0,0.5);
+}
+.intro {
+	text-align: center;
+	top: 20%;
+}
+.intro h1 {
+	text-shadow: 4px 4px 4px rgba(255,255,255,0.2);
+	color: #FF0000;
+    font-style: italic;
+    font-weight: 700;
+}
+h1 {
+    margin-top: 10% !important;
+}
+
+/* bandeau titre */
+.box {
+    width: 100%;
+	margin-bottom: 4%;
+    box-shadow: 0px 4px 4px rgba(250,0,0,0.8);
+    margin-top: 20px;
+    color: #FFF;
+    background-color: rgba(0,0,0,0.5);
+}
+.title {
+	margin-left: 5%;
+}
+
+/* slider*/
+.slider {
+    width: 100%;
+    height: 60%;
+}
+.slides {
+	display: none;
+	-webkit-animation: fade 2s; /* Safari 4+ */
+	-moz-animation: fade 2s; /* FireFox 5+ */
+	animation: fade 2s; /* IE 10+ and FireFox 29+ */
+}
+.slides img {
+    width: 100%;
+    overflow: hidden;
+    max-height: 60%;
+}
+.texte {
+	position: absolute;
+	z-index: 990;
+	top: 60%;
+	left: 20%;
+}
+.slides h3 {
+    font-size: 2em;
+    color: #FF0000;
+    position: absolute;
+    top: 30%;
+	left: 20%;
+}
+.slides p {
+	color:#000;
+	font-weight:600;
+    font-size: 1.2em;
+    background: rgba(255,255,255,0.2);
+}
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* les boutons */
+#panel {
+	position: absolute;
+	margin-top: -3%;
+    width: 100%;
+    overflow: hidden;
+	text-align: center;
+	color: #fff;
+	background-color: #00000070;
+}
+#panel a:hover {
+	cursor: pointer;
+	color: #FF0000;
+}
+#panel a:active {
+	color: #d9d9d9;
+	text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+      1px 1px 0 #fff; /* Text outline */
+}
+#panel #playPause {
+	display: inline;
+}
+
+/* accueil */
+.accueil {
+    text-align: center;
+    margin-top: 0%;
+}
+.accueil h2 {
+	text-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+    color: #FF0000;
+    font-weight: 700;
+    margin-top: 2%;
+}
+.accueil p {
+	margin-top: 5%;
+    font-weight:600;
+}
+
+/* La carte */
+#map {
+    height :400px;
+    width: 100%;
+	box-shadow: 6px 6px 6px rgba(0,0,0,0.5);
+	z-index: 1;
+}
+#map-reset {
+	z-index: 997;
+	position: relative;
+    left: 5%;
+	border: 0;
+    line-height: 1.2;
+    margin-top: 1%;
+    padding: 1%;
+    font-size: 1.2em;
+    font-weight: 600 !important;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000000;
+    border-radius: 10px;
+    background-color: #FF0000;
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.4), inset -2px -2px 3px rgba(0, 0, 0, 0.4);
+}
+#map-reset:hover, #map-reset:focus {
+	cursor:pointer;
+}
+
+/* reservation */
+#form_book {
+	text-align: center;
+    width: 100%;
+    max-height: 800px;
+	border-collapse: collapse;
+	box-shadow: 6px 6px 6px rgba(0,0,0,0.5);
+    padding: 5px;
+}
+#info {
+    width: 100%;
+    max-height: 400px;
+	border-collapse: collapse;
+    padding: 5px;
+}
+.info {
+    text-align: center;
+}
+.station-field {
+	font-style: italic;
+}
+#station-info {
+    padding: 20px;
+}
+.station-name, .station-adresse {
+	font-weight: 600;
+}
+li {
+	list-style-type: none;
+}
+.fa-bicycle {
+	color: #FF0000;
+}
+#reservation {
+    border-top: solid #FF0000 2px;
+    padding: 20px;
+    visibility: hidden;
+    position: relative;
+    z-index: 4;
+}
+input{
+	padding:3px;
+	border:1px solid #FF0000;
+	border-radius:10px;
+	box-shadow:1px 1px 2px #FF00ff inset;
+}
+.submit, input[type=reset] {
+	text-align: center;
+	margin-top: 4%;
+	border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1em;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000000;
+    border-radius: 10px;
+    background-color: #FF0000;
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.4), inset -2px -2px 3px rgba(0, 0, 0, 0.4);
+	font-weight: 600;
+}
+.submit:hover, input[type=reset]:hover {
+	cursor:pointer;
+	box-shadow:1px 1px 2px #FF0000 inset;
+}
+.submit:focus, input[type=reset]:focus {
+	cursor:pointer;
+}
+#signature {
+    position: relative;
+    z-index: 5;
+	border:1px solid #FF0000;
+	border-radius:10px;
+	background: #FFFFFF;
+	box-shadow:1px 1px 2px #FF00ff inset;
+}
+#signatureCheck {
+    display: none;
+    z-index: -10;
+}
+
+/* le compteur */
+#countdown {
+	text-align: center;
+    margin: auto;
+    border: solid 2px #FF0000;
+    font-weight: 600;
+  }
+
+/* pied de page */
+.pied_page {
+    background: rgba(0,0,0);
+    color: #FFFFFF;
+    margin-top: 5%;
+}
+.pied_page a {
+	color: #FFFFFF;
+}
+.pied_page a:hover {
+	color: #FF0000;
+}
+.mentions_legales {
+	margin-left: 5%;
+}
+.copyright {
+	text-align: center;
+	margin: auto;
+}
+.contact {
+	font-weight: 600;
+}
+
+/* media queries */
+@media (max-width:950px) {
+/* bouton recentrer la carte */
+    #map-reset {
+        left: 8%;
+    }
+}
+@media (max-width:768px) {
+/* menu */
+    nav {
+        display: none !important;
+    }
+    .logo {
+        z-index: 0;
+        position: relative;
+    }
+/* bouton recentrer la carte */
+    #map-reset {
+        left: 10%;
+        margin-top: 2%;
+    }
+}
+@media(max-width:500px) {
+/* intro du site */
+    .intro h1 {
+        font-size: 1.8em;
+    }
+/* Diaporama */
+    .slides p {
+       font-size: 1em;
+       left: 1%;
+    }
+    .slides h3 { 
+        font-size: 1.5em;
+        left: 1%;
+    }
+/* Accueil */
+    .accueil h2 {
+        font-size: 1.5em;
+        margin-top: 5%;
+    }
+    .accueil p {
+        font-size: 1em;
+    }
+/* La carte */
+    #map {
+        height : 200px;
+    }
+/* Reservation */
+    #map-reset {
+        left: 12%;
+    }
+    #station-info {
+        margin-left: 0%;
+    }
+/* formulaire */
+    #lastname, #firstname, #signature {
+        width: 90%;
+    }
+}
+
+@media(max-width:350px) {
+/* texte en général */
+    body {
+        font-size: 0.8em !important;
+    }
+/* intro du site */
+    .intro h1 {
+        font-size: 1.5em;
+    }
+    h1 {
+        margin-top: 20%!important;
+    }
+/* Diaporama */
+    .slides p {
+       font-size: 0.8em;
+       left: 1%;
+    }
+    .slides h3 { 
+        font-size: 1.2em;
+        left: 1%;
+        top: 38%;
+    }
+/* Accueil */
+    .accueil h2 {
+        font-size: 1.2em;
+        margin-top: 10%;
+    }
+    .accueil p {
+        font-size: 0.8em;
+    }
+/* bandeau titre */
+    .title {
+        font-size: 1.2em !important;
+    }
+/* Reservation */
+    #map-reset {
+        left: 20%;
+    }
+    h4 {
+        font-size: 1.2em !important;
+        font-weight: 600 !important;
+    }
+}
